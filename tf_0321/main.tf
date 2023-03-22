@@ -51,12 +51,20 @@ resource "aws_security_group" "dev_sg_public" {
   description = "public security group"
   vpc_id      = aws_vpc.dev_vpc.id
   ingress {
+    description = "HTTPS"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0", "61.6.119.161/32"]
+    cidr_blocks = ["0.0.0.0/0", "61.6.119.161/32", "175.140.34.214/32"]
   }
 
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0", "61.6.119.161/32", "175.140.34.214/32"]
+  }
   egress {
     from_port   = 0
     to_port     = 0
@@ -84,5 +92,13 @@ resource "aws_instance" "dev_node" {
 
   tags = {
     "Name" = "dev-node"
+  }
+
+  provisioner "local-exec" {
+    command = templatefile("${var.host_os}-ssh-config.tpl", {
+      hostname = self.public_ip,
+      user     = "ubuntu",
+    identityfile = "~/.ssh/awsDevKey" })
+    interpreter = var.host_os == "windows" ? ["Powershell", "-Command"] : ["bash", "-c"]
   }
 }
