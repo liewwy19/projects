@@ -1,5 +1,13 @@
 # projects
 
-## Terraform Course - Automate your AWS cloud infrastructure (tf-0317)
+#### terraform 0317
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SLB_c_ayRMo/0.jpg)](https://www.youtube.com/watch?v=SLB_c_ayRMo)
+- YouTube / freeCodeCamp.org / Terraform Course - Automate your AWS cloud infrastructure
+
+#### terraform 0321
+
+- morethancertified.com (Course) / Derek Morgan / Build a Dev Environment with Terraform and AWS
+
+#### terraform spacelift 0323
+
+- spacelift.io / Documentation / Tutorials
