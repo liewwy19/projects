@@ -2,6 +2,7 @@
 **/.terraform/*
 **/.vagrant/*
 **/.secrets/**
+**/.aws/**
 
 # .tfstate files
 *.tfstate
